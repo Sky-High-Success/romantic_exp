@@ -40,7 +40,7 @@ footer.site-footer .footer-widgets .sidebar ul {
 
 footer.site-footer .footer-widgets .sidebar ul li {
     color: #d5d5d5;
-    text-transform: uppercase;
+/*     text-transform: uppercase; */
 }
 footer.site-footer .footer-widgets .sidebar ul li a {
     color: #959595;
@@ -66,5 +66,16 @@ footer.site-footer .footer-widgets .sidebar.widget_search #s {
 
 .row.footer-widgets{
 	background-color: #222;
+}
+
+
+footer.site-footer .footer-bottom {
+    border-top: 1px solid #eee;
+    margin-top: 20px;
+    padding: 40px 0 0;
+}
+
+footer.site-footer .footer-bottom {
+    border-color: #3a3a3a;
 }
 
