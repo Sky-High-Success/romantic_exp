@@ -120,7 +120,7 @@ function romantic_widget_footer(){ ?>
 
 		<div class="row visible-xs">
 			<div class="col-lg-12">
-				<a href="#" class="expand-footer"></a>
+				<a href="javascript:;" class="expand-footer"></a>
 			</div>
 		</div>
 
@@ -249,6 +249,36 @@ function romantic_widget_footer(){ ?>
 				<div class="sidebar widget_text text-3">
 					<h3>Follow us!</h3>
 					<div class="textwidget">
+						<a href="javascript:;">
+						<span class="fa-stack fa-lg">
+  							<i class="fa fa-circle fa-stack-2x"></i>
+  							<i class="fa fa-facebook fa-stack-1x follow-us-icon-color"></i>
+						</span>
+						</a>
+					</div>
+					<div class="textwidget">
+						<a href="javascript:;">
+						<span class="fa-stack fa-lg">
+  							<i class="fa fa-circle fa-stack-2x"></i>
+  							<i class="fa fa-twitter fa-stack-1x follow-us-icon-color"></i>
+						</span>
+						</a>
+					</div>
+					<div class="textwidget">
+						<a href="javascript:;">
+						<span class="fa-stack fa-lg">
+  							<i class="fa fa-circle fa-stack-2x"></i>
+  							<i class="fa fa-instagram fa-stack-1x follow-us-icon-color"></i>
+						</span>
+						</a>
+					</div>
+					<div class="textwidget">
+						<a href="javascript:;">
+						<span class="fa-stack fa-lg">
+  							<i class="fa fa-circle fa-stack-2x"></i>
+  							<i class="fa fa-linkedin fa-stack-1x follow-us-icon-color"></i>
+						</span>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -265,5 +295,32 @@ function romantic_widget_footer(){ ?>
 	</div>
 
 <?php }
+
+add_action ( 'wp_footer', 'romantic_custom_after_footer', 100 );
+
+function romantic_custom_after_footer() {
+	?>
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+
+		// Footer Expand
+		$(".site-footer").find('.expand-footer').on('click', function(ev)
+		{
+			ev.preventDefault();
+			$(".site-footer").find('.footer-widgets').children().removeClass("col-sm-3");
+
+			$(".site-footer").find('.footer-widgets').removeClass('hidden-xs').prev().removeClass('visible-xs').addClass('hidden');
+		});
+
+
+    });
+
+
+</script>
+
+
+
+<?php
+}
 
 genesis();

@@ -82,3 +82,27 @@ footer.site-footer .footer-bottom {
     border-color: #3a3a3a;
 }
 
+.follow-us-icon-color{
+	color: #222;
+}
+
+.sidebar .textwidget a:hover{
+	color: #999;
+}
+
+.sidebar{
+	width: 100%;
+}
+
+.sidebar .textwidget{
+	padding-bottom: 10px;
+}
+
+.site-footer .wrap{
+	max-width: 100% !important;
+}
+
+.site-footer .footer-widgets .col-sm-3{
+	width: 20%;
+}
+
