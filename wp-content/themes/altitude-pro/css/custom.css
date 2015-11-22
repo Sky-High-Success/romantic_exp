@@ -30,6 +30,7 @@ footer.site-footer .footer-widgets .sidebar > h3 {
 
 footer.site-footer .footer-widgets .sidebar > h3 {
 	color: #eee;
+	text-decoration: underline;
 }
 
 footer.site-footer .footer-widgets .sidebar ul {
@@ -41,12 +42,14 @@ footer.site-footer .footer-widgets .sidebar ul {
 footer.site-footer .footer-widgets .sidebar ul li {
     color: #d5d5d5;
 /*     text-transform: uppercase; */
+	margin-bottom: 5px;
+	padding-bottom: 10px;
 }
 footer.site-footer .footer-widgets .sidebar ul li a {
     color: #959595;
 }
 footer.site-footer .footer-widgets .sidebar ul li a:hover {
-    color: #333;
+    color: #fff;
 }
 footer.site-footer .footer-widgets .sidebar ul li.current-menu-item > a {
     color: #333;
