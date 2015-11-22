@@ -1,0 +1,70 @@
+footer.site-footer{
+	background: #222 none repeat scroll 0 0;
+	color: #888;
+    font-size: 14px;
+    font-weight: 300;
+    padding: 40px 0;
+}
+
+footer.site-footer .expand-footer {
+    background: rgba(0, 0, 0, 0) url("../images/expand-footer-inv.svg") no-repeat scroll 50% 50% / 28px auto;
+    display: block;
+    height: 38px;
+    margin: 0 auto 20px;
+    text-align: center;
+    text-indent: -9999px;
+    vertical-align: middle;
+    width: 38px;
+}
+
+footer.site-footer .footer-widgets .sidebar {
+    margin-bottom: 30px;
+}
+
+footer.site-footer .footer-widgets .sidebar > h3 {
+    color: #333;
+    font-size: 16px;
+    font-weight: 300;
+    margin: 0 0 15px;
+}
+
+footer.site-footer .footer-widgets .sidebar > h3 {
+	color: #eee;
+}
+
+footer.site-footer .footer-widgets .sidebar ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+footer.site-footer .footer-widgets .sidebar ul li {
+    color: #d5d5d5;
+    text-transform: uppercase;
+}
+footer.site-footer .footer-widgets .sidebar ul li a {
+    color: #959595;
+}
+footer.site-footer .footer-widgets .sidebar ul li a:hover {
+    color: #333;
+}
+footer.site-footer .footer-widgets .sidebar ul li.current-menu-item > a {
+    color: #333;
+}
+footer.site-footer .footer-widgets .sidebar ul li .post-date {
+    display: block;
+    font-size: 12px;
+}
+footer.site-footer .footer-widgets .sidebar.widget_search .screen-reader-text {
+    display: none;
+}
+footer.site-footer .footer-widgets .sidebar.widget_search #s {
+    margin-bottom: 10px;
+    outline: 0 none;
+    padding: 5px 10px;
+}
+
+.row.footer-widgets{
+	background-color: #222;
+}
+
