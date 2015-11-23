@@ -134,11 +134,16 @@ footer.site-footer .footer-bottom {
 
 .front-page-1 .image-section h2{
 	color: #111;
+	background: rgba(255, 255, 255, 0.3) none repeat scroll 0 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 5px;
 }
 
 .image-section .button.clear{
 	border-color: #111;
 	color: #111;
+	padding
 }
 
 .site-description {
@@ -160,12 +165,13 @@ footer.site-footer .footer-bottom {
 
 @media (min-width: 1200px){
 	.nav-bottom-component{
+	    margin-top: 10px;
 		float: right;
 	}	
 	
 	.nav-top-component{
 		margin-top: 15px;
-		margin-bottom: 10px;
+		
 	}	
 	
 }
@@ -298,4 +304,22 @@ footer.site-footer .footer-bottom {
 
 }
 
+.site-header.dark .site-description{
+	display: none;
+}
 
+.site-header.dark .nav-top-component{
+	display: none;
+}
+
+.site-header.dark .site-title{
+	margin-top: 0px;
+}
+
+.site-header .account-dropdown{
+	display: none;
+}
+
+.site-header.dark .account-dropdown{
+	display: inherit;
+}
