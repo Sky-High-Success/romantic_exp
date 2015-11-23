@@ -106,3 +106,26 @@ footer.site-footer .footer-bottom {
 	width: 20%;
 }
 
+.heart_img{
+/* 	width: 300px; */
+}
+
+@media (min-width: 1200px){
+	.front-page-2 .col-lg-3{
+		width: 20%;
+	}
+	
+}
+
+@media (max-width: 500px){
+	.front-page-2 .col-lg-3{
+		width: 100%;
+	}
+	
+}
+
+.front-page-2 .hvr-pulse-grow{
+	display: block;
+}
+
+

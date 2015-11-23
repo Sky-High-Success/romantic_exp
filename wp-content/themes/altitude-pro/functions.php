@@ -34,6 +34,8 @@ function altitude_enqueue_scripts_styles() {
 
 	wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/css/custom.css', array('bootstrap3-style'), ''  );
 	
+	wp_enqueue_style( 'hover-style', get_stylesheet_directory_uri() . '/css/hover-min.css', array(), ''  );
+	
 	
 	wp_enqueue_script ( 'bootstrap3-js', get_stylesheet_directory_uri() . '/js/bootstrap3.min.js', array (
 			'jquery'
