@@ -19,6 +19,8 @@ define( 'CHILD_THEME_NAME', 'Altitude Pro Theme' );
 define( 'CHILD_THEME_URL', 'http://my.studiopress.com/themes/altitude/' );
 define( 'CHILD_THEME_VERSION', '1.0.0' );
 
+add_theme_support( 'woocommerce' );
+
 //* Enqueue scripts and styles
 add_action( 'wp_enqueue_scripts', 'altitude_enqueue_scripts_styles' );
 function altitude_enqueue_scripts_styles() {
@@ -67,8 +69,46 @@ add_theme_support ( 'genesis-menus' , array ( 'primary' => 'Primary Navigation M
 unregister_sidebar( 'header-right' );
 
 //* Reposition the primary navigation menu
-remove_action( 'genesis_after_header', 'genesis_do_nav' );
-add_action( 'genesis_header', 'genesis_do_nav', 12 );
+ remove_action( 'genesis_after_header', 'genesis_do_nav' );
+ add_action( 'genesis_header', 'romantic_do_nav', 12 );
+ 
+ //add_action( 'genesis_header', 'genesis_do_nav', 12 );
+ 
+
+function romantic_do_nav(){?>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+  	<div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" id="top-nav">
+      <div>
+      
+      	<ul class="nav navbar-nav nav-top-component">
+      		<li><a class="hvr-shutter-out-horizontal custom-button">Log In</a></li>
+      		<li><a class="hvr-shutter-out-horizontal custom-button">Sign Up</a></li>
+      	</ul>
+      
+      </div>
+      <ul class="nav navbar-nav nav-bottom-component">
+        <li><a class="romantic-float-shadow" href="http://sendhugsandkisses.com.au">Send Hugs & Kisses<span class="sr-only">(current)</span></a></li>
+        <li><a class="romantic-float-shadow" href="<?php echo get_home_url(null, "romantic-experiences");?>">Experiences</a></li>
+        <li><a class="romantic-float-shadow" href="<?php echo get_home_url(null, "blog");?>">Romantic Ideas</a></li>
+        <li><a class="romantic-float-shadow" href="<?php echo get_home_url(null, "gift-vouchers");?>">Gift Vouchers</a></li>
+         </ul>
+    </div>
+      
+  </div>
+</nav>
+
+<?php	
+}
 
 //* Remove output of primary navigation right extras
 remove_filter( 'genesis_nav_items', 'genesis_nav_right', 10, 2 );

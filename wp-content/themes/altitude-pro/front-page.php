@@ -361,6 +361,7 @@ function romantic_widget_footer(){ ?>
 </div>
 
 <?php }
+ 
 
 add_action ( 'wp_footer', 'romantic_custom_after_footer', 100 );
 
