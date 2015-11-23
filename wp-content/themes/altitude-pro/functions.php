@@ -101,9 +101,9 @@ function romantic_do_nav(){?>
         <li><a class="romantic-float-shadow" href="<?php echo get_home_url(null, "romantic-experiences");?>">Experiences</a></li>
         <li><a class="romantic-float-shadow" href="<?php echo get_home_url(null, "blog");?>">Romantic Ideas</a></li>
         <li><a class="romantic-float-shadow" href="<?php echo get_home_url(null, "gift-vouchers");?>">Gift Vouchers</a></li>
-        <li><a  href="<?php echo get_home_url(null, "shopping");?>"><i class="fa fa-2x fa-flip-horizontal fa-shopping-cart shopping-cart-icon" ></i></a></li>
+        <li><a  class="hvr-skew-backward" href="<?php echo get_home_url(null, "shopping");?>"><i class="fa fa-2x fa-flip-horizontal fa-shopping-cart shopping-cart-icon" ></i></a></li>
       	<li class="dropdown account-dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-lg fa-user user-icon"></i> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-lg fa-user user-icon hvr-buzz-out"></i> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#">Sign Up</a></li>
             <li><a href="#">Log In</a></li>
