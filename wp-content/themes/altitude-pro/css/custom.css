@@ -156,23 +156,49 @@ footer.site-footer .footer-bottom {
     color: #111;
 }
 
+.site-header .account-dropdown{
+	display: none;
+}
+
 @media (max-width: 1023px){
 	.site-description{
 		text-align: center;
 	}		
 	
+	.title-area{
+		width: 100% !important;
+	}
+	
+	.gift-vouchers-menu{
+		display: none !important;
+	}
+	
+	
 }
 
-@media (min-width: 1200px){
+@media (min-width: 768px) and (max-width: 1023px){
+	.site-header .nav-top-component{
+		display: none;
+	}
+
+	.site-header .account-dropdown{
+		display: inherit;
+	}
+}
+
+@media (min-width: 1023px){
 	.nav-bottom-component{
 	    margin-top: 10px;
 		float: right;
+		margin-bottom: 6px;
 	}	
 	
 	.nav-top-component{
 		margin-top: 15px;
 		
 	}	
+	
+	
 	
 }
 
@@ -304,6 +330,10 @@ footer.site-footer .footer-bottom {
 
 }
 
+.site-header.dark .title-area{
+	width: 150px;
+}
+
 .site-header.dark .site-description{
 	display: none;
 }
@@ -316,10 +346,18 @@ footer.site-footer .footer-bottom {
 	margin-top: 0px;
 }
 
-.site-header .account-dropdown{
-	display: none;
-}
-
 .site-header.dark .account-dropdown{
 	display: inherit;
 }
+
+@media (max-width: 1200px){
+	.site-description{
+		display:none;
+	}
+	
+	.title-area{
+		width: 200px;
+	}	
+}
+
+
