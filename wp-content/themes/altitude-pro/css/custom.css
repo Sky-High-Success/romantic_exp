@@ -1,3 +1,18 @@
+.entry-header::after{
+	border-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.entry-title{
+	font-size: 40px;
+	text-transform: uppercase;
+}
+
+.entry-header{
+	overflow: hidden;
+}
+
+
 footer.site-footer{
 	background: #222 none repeat scroll 0 0;
 	color: #888;
@@ -208,6 +223,10 @@ footer.site-footer .footer-bottom {
 		display: block;
 	}
 	
+	.entry-title{
+		font-size: 30px;
+	}
+	
 }
 
 
@@ -359,5 +378,8 @@ footer.site-footer .footer-bottom {
 		width: 200px;
 	}	
 }
+
+
+
 
 

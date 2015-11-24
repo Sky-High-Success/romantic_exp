@@ -30,16 +30,16 @@ function altitude_enqueue_scripts_styles() {
 	wp_enqueue_style( 'dashicons' );
 	wp_enqueue_style( 'altitude-google-fonts', '//fonts.googleapis.com/css?family=Ek+Mukta:200,800', array(), CHILD_THEME_VERSION );
 	
+	
 	wp_enqueue_style( 'animate-style', get_stylesheet_directory_uri() . '/css/animate.min.css', array(), ''  );
-	wp_enqueue_style( 'bootstrap3-style', get_stylesheet_directory_uri() . '/css/bootstrap3.min.css', array(), ''  );
+	wp_enqueue_style( 'bootstrap3-style', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), ''  );
 	wp_enqueue_style( 'fa-style', get_stylesheet_directory_uri() . '/css/font-awesome.min.css', array(), ''  );
 
+	wp_enqueue_style( 'hover-style', get_stylesheet_directory_uri() . '/css/hover-min.css', array(), ''  );
 	wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/css/custom.css', array('bootstrap3-style'), ''  );
 	
-	wp_enqueue_style( 'hover-style', get_stylesheet_directory_uri() . '/css/hover-min.css', array(), ''  );
 	
-	
-	wp_enqueue_script ( 'bootstrap3-js', get_stylesheet_directory_uri() . '/js/bootstrap3.min.js', array (
+	wp_enqueue_script ( 'bootstrap3-js', get_stylesheet_directory_uri() . '/js/bootstrap.min.js', array (
 			'jquery'
 	), '2014-07-18', true );
 	
@@ -91,8 +91,8 @@ function romantic_do_nav(){?>
       <div>
       
       	<ul class="nav navbar-nav nav-top-component">
-      		<li><a class="hvr-shutter-out-horizontal custom-button">Log In</a></li>
-      		<li><a class="hvr-shutter-out-horizontal custom-button">Sign Up</a></li>
+      		<li><a href="<?php echo get_home_url(null, "supplier-log-in");?>" class="hvr-shutter-out-horizontal custom-button">Log In</a></li>
+      		<li><a href="<?php echo get_home_url(null, "supplier-sign-up");?>" class="hvr-shutter-out-horizontal custom-button">Sign Up</a></li>
       	</ul>
       
       </div>
