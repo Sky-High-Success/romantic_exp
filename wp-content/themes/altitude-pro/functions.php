@@ -1,4 +1,49 @@
 <?php
+// changed by Jack
+
+// Insert attachments front end
+function custom_insert_attachment($file_handler,$post_id='0',$setthumb='false') {
+
+	// check to make sure its a successful upload
+	if ($_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK) __return_false();
+
+	require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+	require_once(ABSPATH . "wp-admin" . '/includes/file.php');
+	require_once(ABSPATH . "wp-admin" . '/includes/media.php');
+
+	$attach_id = media_handle_upload( $file_handler, $post_id );
+
+	if ($setthumb) update_post_meta($post_id,'_thumbnail_id',$attach_id);
+	return $attach_id;
+}
+
+function add_supplier_meta($user_id, $gst, $company, $contact, $cost, $date, $details, $location, $phone, $position){
+	
+	global $wpdb;
+	
+	$user_table = $wpdb->prefix.'users';
+	
+	$wpdb->update(
+			$user_table ,
+			array(
+					'GST' => $gst,	// string
+					'company' => $company,	// string
+					'contact' => $contact,	// string
+					'cost' => $cost,
+					'date' => $date,
+					'details' => $details,
+					'location' => $location,
+					'phone' => $phone,
+					'position' => $position,
+					'is_supplier' => 1
+						
+			),
+			array( 'ID' => $user_id )
+	);
+}
+
+
+
 //* Start the engine
 include_once( get_template_directory() . '/lib/init.php' );
 
@@ -34,6 +79,11 @@ function altitude_enqueue_scripts_styles() {
 	wp_enqueue_style( 'animate-style', get_stylesheet_directory_uri() . '/css/animate.min.css', array(), ''  );
 	wp_enqueue_style( 'bootstrap3-style', get_stylesheet_directory_uri() . '/css/bootstrap.min.css', array(), ''  );
 	wp_enqueue_style( 'fa-style', get_stylesheet_directory_uri() . '/css/font-awesome.min.css', array(), ''  );
+	wp_enqueue_style( 'datepicker-style', get_stylesheet_directory_uri() . '/css/bootstrap-datepicker3.min.css', array('bootstrap3-style'), ''  );
+	
+// 	wp_enqueue_style( 'ezdz-style', get_stylesheet_directory_uri() . '/css/ezdz_custom.css', array('jquery'), ''  );
+	
+	
 
 	wp_enqueue_style( 'hover-style', get_stylesheet_directory_uri() . '/css/hover-min.css', array(), ''  );
 	wp_enqueue_style( 'custom-style', get_stylesheet_directory_uri() . '/css/custom.css', array('bootstrap3-style'), ''  );
@@ -42,6 +92,14 @@ function altitude_enqueue_scripts_styles() {
 	wp_enqueue_script ( 'bootstrap3-js', get_stylesheet_directory_uri() . '/js/bootstrap.min.js', array (
 			'jquery'
 	), '2014-07-18', true );
+	
+	wp_enqueue_script ( 'datepicker-js', get_stylesheet_directory_uri() . '/js/bootstrap-datepicker.min.js', array (
+			'bootstrap3-js'
+	), '2014-07-18', true );
+	
+// 	wp_enqueue_script ( 'ezdz-js', get_stylesheet_directory_uri() . '/js/jquery.ezdz.js', array (
+// 			'jquery'
+// 	), '2014-07-18', true );
 	
 	wp_enqueue_script ( 'waypoint-js', get_stylesheet_directory_uri() . '/js/jquery.waypoints.min.js', array (
 			'jquery'

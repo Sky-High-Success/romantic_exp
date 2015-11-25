@@ -21,26 +21,60 @@ if ( is_user_logged_in() ) {
 
 if(isset($_POST['type_hidden']) && $_POST['type_hidden'] == "signup" && isset($_POST['post_nonce_field']) && wp_verify_nonce($_POST['post_nonce_field'], 'post_nonce')) {
 
-	$email = esc_sql ( isset ( $_REQUEST ['login_email'] ) ? $_REQUEST ['login_email'] : '' );
-	$password = esc_sql ( isset ( $_REQUEST ['login_password'] ) ? $_REQUEST ['login_password'] : '' );
-	$remember = esc_attr(strip_tags($_POST['remember_me']));
+	$email = esc_sql ( isset ( $_REQUEST ['signup_email'] ) ? $_REQUEST ['signup_email'] : '' );
+	$password = esc_sql ( isset ( $_REQUEST ['signup_password'] ) ? $_REQUEST ['signup_password'] : '' );
+	$gst= esc_attr(strip_tags($_POST['signup_GST']));
+	$company= esc_attr(strip_tags($_POST['signup_company']));
+	$contact= esc_attr(strip_tags($_POST['signup_contact']));
+	$cost= esc_attr(strip_tags($_POST['signup_cost']));
+	$date= date_format(date_create_from_format('d/M/Y', esc_attr(strip_tags($_POST['signup_date'])) ), 'Y-m-d');  
+	$details= esc_attr(strip_tags($_POST['signup_details']));
+	$location= esc_attr(strip_tags($_POST['signup_location']));
+	$phone= esc_attr(strip_tags($_POST['signup_phone']));
+	$position= esc_attr(strip_tags($_POST['signup_position']));
 
-	if ($remember)
-		$remember = true;
-	else
-		$remember = false;
-
-	$creds = array();
-	$creds['user_login'] = $email;
-	$creds['user_password'] = $password;
-	$creds['remember'] = $remember;
-
-	global $login_user;
-	$login_user = wp_signon( $creds, false );
+	$userdata = array(
+			'user_login'  =>  $email,
+			'user_email'  =>  $email,
+			'user_pass'   =>  $password,  // When creating an user, `user_pass` is expected.
+			'role' => 'author',
+	);
 	
-	if ( !is_wp_error($login_user) ){
-		wp_redirect(get_home_url());
-		exit();
+	$user_id = wp_insert_user( $userdata ) ;
+	
+	if ( is_wp_error( $user_id ) ) {
+	
+		wp_redirect( add_query_arg('error_msg',urlencode("Supplier creation failed, supplier email has to be unique."),get_home_url(null, "")) ); exit;
+	
+	}else{
+	
+		if ( $_FILES ) {
+			
+				$files = $_FILES['signup_image'];
+				foreach ($files['name'] as $key => $value) {
+					if ($files['name'][$key]) {
+						$file = array(
+							'name'     => $files['name'][$key],
+							'type'     => $files['type'][$key],
+							'tmp_name' => $files['tmp_name'][$key],
+							'error'    => $files['error'][$key],
+							'size'     => $files['size'][$key]
+						);
+			 
+						$_FILES = array("signup_image" => $file);
+						foreach ($_FILES as $file => $array) {
+							
+							error_log($file);
+							$newupload = custom_insert_attachment($file);
+						}
+					}
+				}
+		 }
+		
+		 add_supplier_meta($user_id, $gst, $company, $contact, $cost, $date, $details, $location, $phone, $position);
+		 wp_redirect( add_query_arg('msg',urlencode("Supplier has been successfully added."),get_home_url(null, "")) ); exit;
+	
+	
 	}
 
 }
@@ -112,15 +146,15 @@ function romantic_page_content(){ ?>
 			class="col-xs-12 col-sm-offset-1 col-sm-10 col-md-12 col-lg-offset-1 col-lg-10">
 			<div class="box">
 				<div class="box-icon">
-					<span class="fa fa-4x fa-lock"></span>
+					<span class="fa fa-4x fa-heart"></span>
 				</div>
 				<div class="info">
 
 					<!-- Form -->
-					<form role="form" id="loginform" action="" method="post"
+					<form role="form" id="loginform" action="" method="post"  enctype="multipart/form-data"
 						class="form-signin">
 						<div class="row">
-							<div class="col-md-12 column-1">
+							<div class="col-md-7 column-1">
 								<h4 class="text-center text-warning">Register Your Interest</h4>
 								
 								<?php 
@@ -205,24 +239,24 @@ function romantic_page_content(){ ?>
 								
 								<div class="form-group has-warning">
 
+									<input type="date" id="signup_date"
+										placeholder="Time period the offer is valid (if limited)" name="signup_date"
+										class="form-control form-input empty">
+
+								</div>
+								
+								<div class="form-group has-warning">
+									<input type="file" id="signup_image"
+										name="signup_image[]"
+										accept="image/png, image/jpeg" multiple>
+									<input class="form-control form-input empty" type="text" placeholder="Image(s) of offer- if available" readonly="">
+
+								</div>
+								
+								<div class="form-group has-warning">
+
 									<input type="password" id="signup_password"
 										placeholder="Set Password" required="" name="signup_password"
-										class="form-control form-input empty">
-
-								</div>
-								
-								<div class="form-group has-warning">
-
-									<input type="password" id="signup_date"
-										placeholder="Time period the offer is valid (if limited)" required="" name="signup_date"
-										class="form-control form-input empty">
-
-								</div>
-								
-								<div class="form-group has-warning">
-
-									<input type="password" id="signup_image"
-										placeholder="Image(s) of offer- if available" required="" name="signup_image"
 										class="form-control form-input empty">
 
 								</div>
@@ -259,6 +293,11 @@ function romantic_custom_after_footer_login() {
 jQuery(document).ready(function ($) {
 
 	$.material.init();
+
+	$('#signup_date').datepicker({
+		format: 'dd/M/yyyy',
+	    startDate: '-1d',
+	});
 
 	$(".login-container .box-icon").addClass("animated rubberBand");
 	$("#loginform h4").addClass("animated rubberBand");
